@@ -1,0 +1,175 @@
+/* =========================================================
+   Site styles. Colors live at the top: change --accent to
+   re-color the whole site.
+   ========================================================= */
+:root {
+  --accent: #7a0019;          /* UMN maroon, matches the CV */
+  --text: #212529;
+  --muted: #6c757d;
+  --bg: #ffffff;
+  --line: #dee2e6;
+  --soft: #f6f6f7;
+}
+html[data-theme="dark"] {
+  --accent: #e0788c;
+  --text: #e4e4e7;
+  --muted: #9a9aa3;
+  --bg: #1c1c1e;
+  --line: #3a3a3e;
+  --soft: #26262a;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; }
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: background-color .2s, color .2s;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+strong, b { font-weight: 500; }
+
+.container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 56px; gap: 1rem;
+}
+.brand { color: var(--text); font-size: 1.15rem; font-weight: 300; white-space: nowrap; }
+.brand b { font-weight: 500; }
+.brand:hover { text-decoration: none; color: var(--accent); }
+
+.nav { display: flex; align-items: center; gap: 1.4rem; list-style: none; margin: 0; padding: 0; }
+.nav a { color: var(--text); font-size: 1rem; }
+.nav a:hover { color: var(--accent); text-decoration: none; }
+.nav a[aria-current="page"] { color: var(--accent); font-weight: 400; }
+
+.theme-toggle {
+  background: none; border: 0; padding: 4px; cursor: pointer;
+  color: var(--text); display: flex; align-items: center;
+}
+.theme-toggle:hover { color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.icon-sun { display: none; }
+html[data-theme="dark"] .icon-sun { display: block; }
+html[data-theme="dark"] .icon-moon { display: none; }
+
+/* ---------- Page ---------- */
+main { flex: 1; padding: 2.5rem 0 3rem; }
+
+.page-title {
+  font-size: 2.6rem; font-weight: 300; line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+.page-title b { font-weight: 500; }
+.page-desc { color: var(--muted); margin: -.5rem 0 1.5rem; }
+
+h2 {
+  font-size: 1.5rem; font-weight: 400; color: var(--accent);
+  margin: 2.2rem 0 1rem; padding-bottom: .3rem;
+  border-bottom: 1px solid var(--line);
+}
+h3 { font-size: 1.1rem; font-weight: 500; margin: 1.6rem 0 .5rem; }
+
+/* ---------- About (home) ---------- */
+.profile {
+  float: left; width: 30%; max-width: 240px;
+  margin: 0 2rem 1.5rem 0;
+  font-size: .92rem;
+}
+
+.profile img { width: 100%; border-radius: 4px; display: block; margin-bottom: 1rem; }
+.profile p { margin: 0 0 .9rem; }
+.profile ul { list-style: none; margin: -.8rem 0 0; padding: 0; }
+
+.clear { clear: both; }
+
+/* ---------- Research entries ---------- */
+.paper { margin: 0 0 1.6rem; }
+.paper-title { font-weight: 500; }
+.paper-meta { color: var(--muted); font-size: .95rem; }
+.paper-links { margin-top: .4rem; }
+.paper-links > * { margin: 0 .35rem .3rem 0; }
+.btn {
+  display: inline-block; font-size: .78rem; font-weight: 400;
+  padding: .12rem .6rem; border: 1px solid var(--accent); border-radius: 3px;
+  color: var(--accent); background: none; cursor: pointer; line-height: 1.6;
+  font-family: inherit;
+}
+.btn:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+
+details.abstract { display: inline; }
+details.abstract summary { list-style: none; display: inline-block; }
+details.abstract summary::-webkit-details-marker { display: none; }
+details.abstract p {
+  margin: .6rem 0 0; padding: .8rem 1rem; background: var(--soft);
+  border-left: 3px solid var(--accent); font-size: .95rem;
+}
+
+/* ---------- Teaching ---------- */
+.role { margin: 0 0 1.4rem; }
+.role-title { font-weight: 500; }
+.course { display: flex; justify-content: space-between; gap: 1rem; }
+.course .when { color: var(--muted); white-space: nowrap; }
+
+/* ---------- CV ---------- */
+.cv-frame {
+  width: 100%; height: 1100px; border: 1px solid var(--line); border-radius: 4px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted); font-size: .85rem; text-align: center;
+  padding: 1rem 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .navbar .container { flex-wrap: wrap; padding-top: .5rem; padding-bottom: .5rem; }
+  .nav { gap: 1rem; }
+  .page-title { font-size: 2rem; }
+  .profile { float: none; width: 100%; max-width: 220px; margin: 0 auto 1.5rem; text-align: center; }
+  .course { flex-direction: column; gap: 0; margin-bottom: .4rem; }
+  .cv-frame { height: 600px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}
+
+/* ---------- Homepage two-column layout ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 200px 1fr;   /* photo column width | text */
+  gap: 3rem;                          /* space between the columns */
+  align-items: start;
+}
+.about .profile { float: none; width: auto; max-width: none; margin: 0; }
+.about .page-title { margin-top: -.3rem; }
+
+@media (max-width: 640px) {
+  .about { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about .profile { max-width: 220px; margin: 0 auto; text-align: center; }
+  .about .bio { order: -1; }   /* on phones: name + text first, then photo */
+}
