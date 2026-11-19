@@ -1,9 +1,9 @@
 // Light/dark mode. Loaded in <head> so the page never flashes the wrong theme.
 (function () {
+  // Default is light; a visitor's own choice from the toggle button is remembered.
   var saved = null;
   try { saved = localStorage.getItem("theme"); } catch (e) {}
-  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+  document.documentElement.setAttribute("data-theme", saved || "light");
 
   document.addEventListener("DOMContentLoaded", function () {
     var btn = document.querySelector(".theme-toggle");
