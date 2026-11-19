@@ -9,6 +9,7 @@
   --bg: #ffffff;
   --line: #dee2e6;
   --soft: #f6f6f7;
+  --abstract: #4a5056;        /* abstract text: softer than body text */
 }
 html[data-theme="dark"] {
   --accent: #e0788c;
@@ -17,6 +18,7 @@ html[data-theme="dark"] {
   --bg: #1c1c1e;
   --line: #3a3a3e;
   --soft: #26262a;
+  --abstract: #c4c4cc;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -105,10 +107,14 @@ h3 { font-size: 1.1rem; font-weight: 500; margin: 1.6rem 0 .5rem; }
 .clear { clear: both; }
 
 /* ---------- Research entries ---------- */
-.paper { margin: 0 0 1.6rem; }
-.paper-title { font-weight: 500; }
+.paper { margin: 0 0 2rem; }
+.paper-title { font-weight: 500; font-size: 1.06rem; line-height: 1.45; }
 .paper-meta { color: var(--muted); font-size: .95rem; }
-.paper-links { margin-top: .4rem; }
+.paper-abstract {
+  margin: .5rem 0 0;                        /* full page width, so papers take less scrolling */
+  font-size: .94rem; line-height: 1.65; color: var(--abstract);
+}
+.paper-links { margin-top: .7rem; }
 .paper-links > * { margin: 0 .35rem .3rem 0; }
 .btn {
   display: inline-block; font-size: .78rem; font-weight: 400;
@@ -117,14 +123,6 @@ h3 { font-size: 1.1rem; font-weight: 500; margin: 1.6rem 0 .5rem; }
   font-family: inherit;
 }
 .btn:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
-
-details.abstract { display: inline; }
-details.abstract summary { list-style: none; display: inline-block; }
-details.abstract summary::-webkit-details-marker { display: none; }
-details.abstract p {
-  margin: .6rem 0 0; padding: .8rem 1rem; background: var(--soft);
-  border-left: 3px solid var(--accent); font-size: .95rem;
-}
 
 /* ---------- Teaching ---------- */
 .role { margin: 0 0 1.4rem; }
